@@ -38,7 +38,7 @@ const Index = () => {
             className="font-display text-6xl md:text-8xl font-light tracking-wide mt-4 animate-fade-up"
             style={{ animationDelay: '.3s', opacity: 0 }}
           >
-            Анна
+            Виола
           </h1>
           <p className="font-hand text-4xl text-[hsl(var(--gold))] my-1 animate-fade-up" style={{ animationDelay: '.45s', opacity: 0 }}>
             &amp;
@@ -47,7 +47,7 @@ const Index = () => {
             className="font-display text-6xl md:text-8xl font-light tracking-wide animate-fade-up"
             style={{ animationDelay: '.55s', opacity: 0 }}
           >
-            Дмитрий
+            Андрей
           </h1>
           <p className="font-body uppercase tracking-[0.4em] text-sm text-[hsl(var(--rose))] mt-6 animate-fade-up" style={{ animationDelay: '.7s', opacity: 0 }}>
             12 · 09 · 2026
@@ -133,11 +133,11 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <a href="tel:+70000000000" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
               <Icon name="Phone" size={20} className="text-[hsl(var(--gold))]" />
-              <span className="font-display text-xl">Анна · +7 000 000 00 00</span>
+              <span className="font-display text-xl">Виола · +7 000 000 00 00</span>
             </a>
             <a href="tel:+70000000001" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
               <Icon name="Phone" size={20} className="text-[hsl(var(--gold))]" />
-              <span className="font-display text-xl">Дмитрий · +7 000 000 00 01</span>
+              <span className="font-display text-xl">Андрей · +7 000 000 00 01</span>
             </a>
           </div>
         </section>
