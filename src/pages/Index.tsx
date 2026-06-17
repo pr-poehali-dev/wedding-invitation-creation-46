@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 
+const WEDDING_DATE = new Date('2026-07-25T14:30:00');
+
 const Rings = () => (
-  <svg viewBox="0 0 200 120" className="w-48 md:w-64 mx-auto mb-4 animate-float" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="72" cy="60" r="44" stroke="hsla(200,40%,72%,0.9)" strokeWidth="7" fill="none"/>
-    <circle cx="72" cy="60" r="44" stroke="hsla(0,0%,100%,0.4)" strokeWidth="2" fill="none" strokeDasharray="4 8"/>
-    <circle cx="128" cy="60" r="44" stroke="hsla(38,45%,70%,0.9)" strokeWidth="7" fill="none"/>
-    <circle cx="128" cy="60" r="44" stroke="hsla(0,0%,100%,0.4)" strokeWidth="2" fill="none" strokeDasharray="4 8"/>
-    <circle cx="80" cy="34" r="4" fill="hsla(0,0%,100%,0.85)"/>
-    <circle cx="122" cy="88" r="3" fill="hsla(0,0%,100%,0.7)"/>
+  <svg viewBox="0 0 200 120" className="w-44 md:w-56 mx-auto mb-6 animate-float" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="72" cy="60" r="44" stroke="hsla(200,40%,72%,0.85)" strokeWidth="6" fill="none"/>
+    <circle cx="72" cy="60" r="44" stroke="hsla(0,0%,100%,0.5)" strokeWidth="1.5" fill="none" strokeDasharray="3 7"/>
+    <circle cx="128" cy="60" r="44" stroke="hsla(38,45%,70%,0.85)" strokeWidth="6" fill="none"/>
+    <circle cx="128" cy="60" r="44" stroke="hsla(0,0%,100%,0.5)" strokeWidth="1.5" fill="none" strokeDasharray="3 7"/>
+    <circle cx="80" cy="34" r="3.5" fill="hsla(0,0%,100%,0.9)"/>
+    <circle cx="122" cy="88" r="2.5" fill="hsla(0,0%,100%,0.75)"/>
   </svg>
 );
-const WEDDING_DATE = new Date('2026-07-25T14:30:00');
 
 const useCountdown = () => {
   const calc = () => {
@@ -33,21 +34,27 @@ const useCountdown = () => {
 };
 
 const CountUnit = ({ value, label }: { value: number; label: string }) => (
-  <div className="flex flex-col items-center">
-    <div className="relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl bg-white/60 border border-[hsl(var(--champagne))] shadow-sm">
+  <div className="flex flex-col items-center gap-2">
+    <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm">
       <span className="font-display text-3xl md:text-4xl font-light text-foreground">
         {String(value).padStart(2, '0')}
       </span>
     </div>
-    <span className="font-body text-[10px] uppercase tracking-widest text-[hsl(var(--rose))] mt-2">{label}</span>
+    <span className="font-body text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--rose))]">{label}</span>
   </div>
 );
 
 const Divider = () => (
-  <div className="flex items-center justify-center gap-3 my-8 animate-fade-in">
-    <span className="h-px w-16 divider-line" />
-    <Icon name="Heart" size={16} className="text-[hsl(var(--rose))]" />
-    <span className="h-px w-16 divider-line" />
+  <div className="flex items-center justify-center gap-4 my-10">
+    <span className="h-px flex-1 max-w-[80px]" style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--gold)))' }} />
+    <Icon name="Gem" size={14} className="text-[hsl(var(--gold))] opacity-70" />
+    <span className="h-px flex-1 max-w-[80px]" style={{ background: 'linear-gradient(90deg, hsl(var(--gold)), transparent)' }} />
+  </div>
+);
+
+const Card = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+  <div className={`rounded-3xl bg-white/35 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-md hover:bg-white/50 transition-all duration-300 ${className}`}>
+    {children}
   </div>
 );
 
@@ -61,46 +68,56 @@ const timeline = [
 
 const Index = () => {
   const countdown = useCountdown();
+
   return (
     <div className="min-h-screen invite-card text-foreground overflow-x-hidden">
-      <div className="max-w-2xl mx-auto px-6">
+      <div className="max-w-xl mx-auto px-5 pb-20">
 
         {/* HERO */}
-        <header className="relative pt-10 text-center">
+        <header className="pt-16 text-center">
           <Rings />
-          <p className="font-hand text-2xl text-[hsl(var(--rose))] animate-fade-up" style={{ animationDelay: '.1s', opacity: 0 }}>
-            Мы приглашаем вас на нашу свадьбу
+          <p
+            className="font-body text-xs uppercase tracking-[0.35em] text-[hsl(var(--rose))/70] mb-6 animate-fade-up"
+            style={{ animationDelay: '.1s', opacity: 0 }}
+          >
+            приглашение на свадьбу
           </p>
           <h1
-            className="font-display text-6xl md:text-8xl font-light tracking-wide mt-4 animate-fade-up"
-            style={{ animationDelay: '.3s', opacity: 0 }}
+            className="font-display font-light animate-fade-up"
+            style={{ fontSize: 'clamp(3.5rem, 14vw, 6rem)', lineHeight: 1.05, letterSpacing: '-0.01em', animationDelay: '.25s', opacity: 0 }}
           >
             Виола
           </h1>
-          <p className="font-hand text-4xl text-[hsl(var(--gold))] my-1 animate-fade-up" style={{ animationDelay: '.45s', opacity: 0 }}>
+          <p
+            className="font-hand text-3xl text-[hsl(var(--gold))] my-2 animate-fade-up"
+            style={{ animationDelay: '.4s', opacity: 0 }}
+          >
             &amp;
           </p>
           <h1
-            className="font-display text-6xl md:text-8xl font-light tracking-wide animate-fade-up"
-            style={{ animationDelay: '.55s', opacity: 0 }}
+            className="font-display font-light animate-fade-up"
+            style={{ fontSize: 'clamp(3.5rem, 14vw, 6rem)', lineHeight: 1.05, letterSpacing: '-0.01em', animationDelay: '.5s', opacity: 0 }}
           >
             Андрей
           </h1>
-          <p className="font-body uppercase tracking-[0.4em] text-sm text-[hsl(var(--rose))] mt-6 animate-fade-up" style={{ animationDelay: '.7s', opacity: 0 }}>
+          <p
+            className="font-body text-xs uppercase tracking-[0.3em] text-[hsl(var(--rose))/60] mt-8 animate-fade-up"
+            style={{ animationDelay: '.65s', opacity: 0 }}
+          >
             25 · 07 · 2026
           </p>
         </header>
 
-        {/* ОБРАТНЫЙ ОТСЧЁТ */}
-        <section className="text-center mt-10 animate-fade-in">
-          <p className="font-hand text-2xl text-[hsl(var(--rose))] mb-5">до нашей свадьбы осталось</p>
-          <div className="flex justify-center gap-4">
+        {/* COUNTDOWN */}
+        <section className="mt-12 text-center animate-fade-in">
+          <p className="font-hand text-xl text-[hsl(var(--rose))] mb-6 opacity-80">до нашей свадьбы осталось</p>
+          <div className="flex justify-center items-start gap-3">
             <CountUnit value={countdown.days} label="дней" />
-            <div className="font-display text-3xl text-[hsl(var(--gold))] self-start pt-3">:</div>
+            <span className="font-display text-2xl text-[hsl(var(--gold))] opacity-60 mt-4">:</span>
             <CountUnit value={countdown.hours} label="часов" />
-            <div className="font-display text-3xl text-[hsl(var(--gold))] self-start pt-3">:</div>
+            <span className="font-display text-2xl text-[hsl(var(--gold))] opacity-60 mt-4">:</span>
             <CountUnit value={countdown.minutes} label="минут" />
-            <div className="font-display text-3xl text-[hsl(var(--gold))] self-start pt-3">:</div>
+            <span className="font-display text-2xl text-[hsl(var(--gold))] opacity-60 mt-4">:</span>
             <CountUnit value={countdown.seconds} label="секунд" />
           </div>
         </section>
@@ -108,27 +125,27 @@ const Index = () => {
         <Divider />
 
         {/* ФОТО */}
-        <section className="animate-fade-in">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="group relative overflow-hidden rounded-3xl aspect-[3/4] shadow-md hover:shadow-xl transition-shadow">
+        <section>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="group relative overflow-hidden rounded-3xl aspect-[3/4] shadow-sm">
               <img
                 src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/bucket/bd1f7dc2-fc7f-4d56-bf8c-aa5967c21226.jpeg"
                 alt=""
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              <p className="absolute bottom-4 left-0 right-0 text-center font-hand text-white text-xl px-3 leading-snug drop-shadow">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+              <p className="absolute bottom-4 left-0 right-0 text-center font-hand text-white text-lg px-3 leading-snug">
                 там, где расцветает любовь
               </p>
             </div>
-            <div className="group relative overflow-hidden rounded-3xl aspect-[3/4] shadow-md hover:shadow-xl transition-shadow mt-8">
+            <div className="group relative overflow-hidden rounded-3xl aspect-[3/4] shadow-sm mt-8">
               <img
                 src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/bucket/68068d68-80b7-4e5e-a9f2-704d6057d3ae.jpeg"
                 alt=""
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              <p className="absolute bottom-4 left-0 right-0 text-center font-hand text-white text-xl px-3 leading-snug drop-shadow">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+              <p className="absolute bottom-4 left-0 right-0 text-center font-hand text-white text-lg px-3 leading-snug">
                 на вершине мира — вместе
               </p>
             </div>
@@ -137,49 +154,50 @@ const Index = () => {
 
         <Divider />
 
-        {/* ОСНОВНАЯ ИНФОРМАЦИЯ */}
-        <section className="text-center animate-fade-in">
-          <p className="font-display text-2xl md:text-3xl font-light leading-relaxed text-foreground/80">
-            Дорогие друзья и близкие! С трепетом и радостью в сердце мы хотим
-            разделить с вами один из самых важных дней нашей жизни.
-            Будем счастливы видеть вас в этот особенный день.
+        {/* ТЕКСТ */}
+        <section className="text-center px-2">
+          <p className="font-display text-xl md:text-2xl font-light leading-relaxed text-foreground/70">
+            Дорогие друзья и близкие! С трепетом и радостью в сердце мы хотим разделить с вами один из самых важных дней нашей жизни. Будем счастливы видеть вас в этот особенный день.
           </p>
         </section>
 
         <Divider />
 
-        {/* ДАТА И ВРЕМЯ + МЕСТА */}
-        <section className="flex flex-col gap-6">
-          <div className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow">
-            <Icon name="CalendarHeart" size={32} className="mx-auto text-[hsl(var(--gold))]" />
-            <h3 className="font-display text-3xl mt-3 mb-1">Дата и время</h3>
-            <p className="font-hand text-3xl text-[hsl(var(--rose))]">25 июля 2026</p>
-            <p className="font-body text-sm tracking-wider text-foreground/70 mt-1">суббота · 14:30</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
+        {/* ДАТА + МЕСТА */}
+        <section className="flex flex-col gap-4">
+          <Card className="p-7 text-center">
+            <Icon name="CalendarDays" size={28} className="mx-auto text-[hsl(var(--gold))] mb-3" />
+            <p className="font-body text-xs uppercase tracking-[0.25em] text-foreground/50 mb-1">дата и время</p>
+            <p className="font-display text-3xl font-light">25 июля 2026</p>
+            <p className="font-hand text-xl text-[hsl(var(--rose))] mt-1">суббота · 14:30</p>
+          </Card>
+
+          <div className="grid grid-cols-2 gap-4">
             <a
               href="https://maps.google.com/?q=г.+Новороссийск,+пр.+Дзержинского,+197"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow block"
             >
-              <Icon name="Heart" size={32} className="mx-auto text-[hsl(var(--gold))]" />
-              <h3 className="font-display text-2xl mt-3 mb-1">Регистрация брака</h3>
-              <p className="font-hand text-xl text-[hsl(var(--rose))] mt-1">Торжественная церемония</p>
-              <p className="font-body text-sm text-foreground/60 mt-2 leading-relaxed">г. Новороссийск<br />пр. Дзержинского, 197</p>
-              <p className="font-body text-xs text-[hsl(var(--gold))] mt-3 tracking-wider uppercase">Открыть на карте →</p>
+              <Card className="p-6 text-center h-full flex flex-col items-center justify-center cursor-pointer">
+                <Icon name="Heart" size={24} className="text-[hsl(var(--rose))] mb-3" />
+                <p className="font-body text-xs uppercase tracking-[0.2em] text-foreground/50 mb-1">регистрация</p>
+                <p className="font-display text-lg font-light leading-tight">Торжественная<br />церемония</p>
+                <p className="font-body text-xs text-foreground/50 mt-3 leading-relaxed">пр. Дзержинского, 197</p>
+                <p className="font-body text-[10px] text-[hsl(var(--gold))] mt-3 tracking-wider uppercase">на карте →</p>
+              </Card>
             </a>
             <a
               href="https://maps.google.com/?q=г.+Новороссийск,+переулок+Ясный,+1"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow block"
             >
-              <Icon name="Wine" size={32} className="mx-auto text-[hsl(var(--gold))]" />
-              <h3 className="font-display text-2xl mt-3 mb-1">Семейный ужин</h3>
-              <p className="font-hand text-xl text-[hsl(var(--rose))] mt-1">Ресторан «Виноград»</p>
-              <p className="font-body text-sm text-foreground/60 mt-2 leading-relaxed">г. Новороссийск<br />переулок Ясный, 1</p>
-              <p className="font-body text-xs text-[hsl(var(--gold))] mt-3 tracking-wider uppercase">Открыть на карте →</p>
+              <Card className="p-6 text-center h-full flex flex-col items-center justify-center cursor-pointer">
+                <Icon name="Wine" size={24} className="text-[hsl(var(--rose))] mb-3" />
+                <p className="font-body text-xs uppercase tracking-[0.2em] text-foreground/50 mb-1">ужин</p>
+                <p className="font-display text-lg font-light leading-tight">Ресторан<br />«Виноград»</p>
+                <p className="font-body text-xs text-foreground/50 mt-3 leading-relaxed">переулок Ясный, 1</p>
+                <p className="font-body text-[10px] text-[hsl(var(--gold))] mt-3 tracking-wider uppercase">на карте →</p>
+              </Card>
             </a>
           </div>
         </section>
@@ -187,68 +205,83 @@ const Index = () => {
         <Divider />
 
         {/* ТАЙМИНГ */}
-        <section className="animate-fade-in">
-          <h2 className="font-display text-4xl text-center mb-2">План дня</h2>
-          <p className="text-center font-hand text-2xl text-[hsl(var(--rose))] mb-8">как пройдёт наш праздник</p>
-          <div className="relative">
-            <span className="absolute left-1/2 top-0 bottom-0 w-px bg-[hsl(var(--champagne))] -translate-x-1/2" />
-            <div className="space-y-6">
-              {timeline.map((t, i) => (
-                <div
-                  key={t.time}
-                  className={`relative flex items-center gap-4 ${i % 2 ? 'md:flex-row-reverse md:text-right' : ''}`}
-                >
-                  <div className="flex-1 md:px-8">
-                    <div className="inline-flex items-center gap-3 rounded-full bg-white/60 border border-[hsl(var(--champagne))] px-5 py-3">
-                      <Icon name={t.icon} size={20} className="text-[hsl(var(--gold))]" />
-                      <span className="font-body text-sm tracking-widest text-[hsl(var(--rose))]">{t.time}</span>
-                      <span className="font-display text-xl">{t.title}</span>
-                    </div>
-                  </div>
-                  <span className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[hsl(var(--gold))] ring-4 ring-[hsl(var(--background))]" />
-                  <div className="hidden md:block flex-1" />
+        <section>
+          <p className="font-body text-xs uppercase tracking-[0.25em] text-foreground/50 text-center mb-2">план дня</p>
+          <h2 className="font-display text-4xl text-center font-light mb-8">Как пройдёт праздник</h2>
+          <div className="flex flex-col gap-3">
+            {timeline.map((t, i) => (
+              <Card key={t.time} className="p-5 flex items-center gap-5">
+                <div className="w-10 h-10 rounded-2xl bg-white/50 flex items-center justify-center flex-shrink-0">
+                  <Icon name={t.icon} size={18} className="text-[hsl(var(--gold))]" />
                 </div>
-              ))}
-            </div>
+                <div className="flex-1">
+                  <span className="font-display text-xl font-light">{t.title}</span>
+                </div>
+                <span className="font-body text-xs tracking-widest text-[hsl(var(--rose))] opacity-70 flex-shrink-0">{t.time}</span>
+              </Card>
+            ))}
           </div>
         </section>
 
         <Divider />
 
         {/* ПРИМЕЧАНИЕ */}
-        <section className="rounded-2xl bg-[hsl(var(--blush))]/30 border border-[hsl(var(--blush))] p-8 text-center animate-fade-in">
-          <Icon name="Info" size={28} className="mx-auto text-[hsl(var(--gold))] mb-2" />
-          <h3 className="font-display text-3xl mb-3">Примечание</h3>
-          <p className="font-body text-sm leading-relaxed text-foreground/75">
-            Наша свадьба состоится на открытом воздухе. Пожалуйста, захватите
-            что-то тёплое, чтобы не замёрзнуть. Мы подготовим пледы на случай,
-            если вам станет холодно.
-            <br /><br />
-            Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">10 июля</span>.
-          </p>
+        <section>
+          <Card className="p-7 text-center">
+            <Icon name="Wind" size={26} className="mx-auto text-[hsl(var(--gold))] mb-3" />
+            <p className="font-body text-xs uppercase tracking-[0.25em] text-foreground/50 mb-3">примечание</p>
+            <p className="font-display text-lg font-light leading-relaxed text-foreground/75">
+              Наша свадьба состоится на открытом воздухе. Пожалуйста, захватите что-то тёплое, чтобы не замёрзнуть. Мы подготовим пледы на случай, если вам станет холодно.
+            </p>
+            <p className="font-body text-xs text-foreground/50 mt-4">
+              Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">10 июля</span>
+            </p>
+          </Card>
         </section>
 
         <Divider />
 
         {/* КОНТАКТЫ */}
-        <section className="text-center animate-fade-in">
-          <h2 className="font-display text-4xl mb-6">Контакты</h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <a href="tel:+79186443306" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
-              <Icon name="Phone" size={20} className="text-[hsl(var(--gold))]" />
-              <span className="font-display text-xl">Виола · +7 918 644 33 06</span>
+        <section className="text-center">
+          <p className="font-body text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2">контакты</p>
+          <h2 className="font-display text-4xl font-light mb-7">Будем рады ответить</h2>
+          <div className="flex flex-col gap-3">
+            <a href="tel:+79186443306">
+              <Card className="p-5 flex items-center justify-between px-7 cursor-pointer">
+                <div className="flex items-center gap-4">
+                  <div className="w-9 h-9 rounded-xl bg-white/50 flex items-center justify-center">
+                    <Icon name="Phone" size={16} className="text-[hsl(var(--gold))]" />
+                  </div>
+                  <div className="text-left">
+                    <p className="font-display text-xl font-light">Виола</p>
+                    <p className="font-body text-xs text-foreground/50 tracking-wide">+7 918 644 33 06</p>
+                  </div>
+                </div>
+                <Icon name="ChevronRight" size={16} className="text-foreground/30" />
+              </Card>
             </a>
-            <a href="tel:+79181368077" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
-              <Icon name="Phone" size={20} className="text-[hsl(var(--gold))]" />
-              <span className="font-display text-xl">Андрей · +7 918 136 80 77</span>
+            <a href="tel:+79181368077">
+              <Card className="p-5 flex items-center justify-between px-7 cursor-pointer">
+                <div className="flex items-center gap-4">
+                  <div className="w-9 h-9 rounded-xl bg-white/50 flex items-center justify-center">
+                    <Icon name="Phone" size={16} className="text-[hsl(var(--gold))]" />
+                  </div>
+                  <div className="text-left">
+                    <p className="font-display text-xl font-light">Андрей</p>
+                    <p className="font-body text-xs text-foreground/50 tracking-wide">+7 918 136 80 77</p>
+                  </div>
+                </div>
+                <Icon name="ChevronRight" size={16} className="text-foreground/30" />
+              </Card>
             </a>
           </div>
         </section>
 
         {/* FOOTER */}
-        <footer className="text-center py-14">
+        <footer className="text-center pt-16 pb-4">
           <Rings />
-          <p className="font-hand text-3xl text-[hsl(var(--rose))]">Ждём вас с любовью</p>
+          <p className="font-hand text-3xl text-[hsl(var(--rose))] opacity-80">Ждём вас с любовью</p>
+          <p className="font-body text-xs text-foreground/30 tracking-widest uppercase mt-4">Виола & Андрей · 25.07.2026</p>
         </footer>
 
       </div>
