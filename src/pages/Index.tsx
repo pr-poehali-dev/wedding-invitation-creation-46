@@ -43,12 +43,11 @@ const Divider = () => (
 );
 
 const timeline = [
-  { time: '15:00', title: 'Сбор гостей', icon: 'Users' },
-  { time: '16:00', title: 'Церемония', icon: 'Heart' },
-  { time: '17:00', title: 'Фуршет и фото', icon: 'Camera' },
-  { time: '18:30', title: 'Банкет', icon: 'Wine' },
-  { time: '22:00', title: 'Первый танец', icon: 'Music' },
-  { time: '23:30', title: 'Праздничный салют', icon: 'Sparkles' },
+  { time: '14:00', title: 'Сбор гостей', icon: 'Users' },
+  { time: '14:30', title: 'Регистрация', icon: 'Heart' },
+  { time: '15:00', title: 'Фотосессия и размещение', icon: 'Camera' },
+  { time: '17:00', title: 'Семейный ужин', icon: 'Wine' },
+  { time: '23:00', title: 'Завершение вечера', icon: 'Moon' },
 ];
 
 const Index = () => {
