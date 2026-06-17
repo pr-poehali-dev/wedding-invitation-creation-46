@@ -144,19 +144,39 @@ const Index = () => {
 
         <Divider />
 
-        {/* ДАТА И ВРЕМЯ + МЕСТО */}
-        <section className="grid md:grid-cols-2 gap-6">
+        {/* ДАТА И ВРЕМЯ + МЕСТА */}
+        <section className="flex flex-col gap-6">
           <div className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow">
             <Icon name="CalendarHeart" size={32} className="mx-auto text-[hsl(var(--gold))]" />
             <h3 className="font-display text-3xl mt-3 mb-1">Дата и время</h3>
-            <p className="font-hand text-3xl text-[hsl(var(--rose))]">25 июля</p>
+            <p className="font-hand text-3xl text-[hsl(var(--rose))]">25 июля 2026</p>
             <p className="font-body text-sm tracking-wider text-foreground/70 mt-1">суббота · 14:30</p>
           </div>
-          <div className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow">
-            <Icon name="MapPin" size={32} className="mx-auto text-[hsl(var(--gold))]" />
-            <h3 className="font-display text-3xl mt-3 mb-1">Место</h3>
-            <p className="font-hand text-3xl text-[hsl(var(--rose))]">Усадьба «Сирень»</p>
-            <p className="font-body text-sm tracking-wider text-foreground/70 mt-1">г. Москва, ул. Цветочная, 7</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <a
+              href="https://maps.google.com/?q=г.+Новороссийск,+пр.+Дзержинского,+197"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow block"
+            >
+              <Icon name="Heart" size={32} className="mx-auto text-[hsl(var(--gold))]" />
+              <h3 className="font-display text-2xl mt-3 mb-1">Регистрация брака</h3>
+              <p className="font-hand text-xl text-[hsl(var(--rose))] mt-1">Торжественная церемония</p>
+              <p className="font-body text-sm text-foreground/60 mt-2 leading-relaxed">г. Новороссийск<br />пр. Дзержинского, 197</p>
+              <p className="font-body text-xs text-[hsl(var(--gold))] mt-3 tracking-wider uppercase">Открыть на карте →</p>
+            </a>
+            <a
+              href="https://maps.google.com/?q=г.+Новороссийск,+переулок+Ясный,+1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow block"
+            >
+              <Icon name="Wine" size={32} className="mx-auto text-[hsl(var(--gold))]" />
+              <h3 className="font-display text-2xl mt-3 mb-1">Семейный ужин</h3>
+              <p className="font-hand text-xl text-[hsl(var(--rose))] mt-1">Ресторан «Виноград»</p>
+              <p className="font-body text-sm text-foreground/60 mt-2 leading-relaxed">г. Новороссийск<br />переулок Ясный, 1</p>
+              <p className="font-body text-xs text-[hsl(var(--gold))] mt-3 tracking-wider uppercase">Открыть на карте →</p>
+            </a>
           </div>
         </section>
 
