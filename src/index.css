@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 36 40% 97%;
+    --background: 200 45% 96%;
     --foreground: 350 15% 28%;
 
     --blush: 350 55% 88%;
@@ -120,13 +120,40 @@
   background:
     radial-gradient(
       circle at 15% 10%,
-      hsla(350, 55%, 88%, 0.35),
-      transparent 45%
+      hsla(200, 60%, 90%, 0.6),
+      transparent 40%
     ),
     radial-gradient(
       circle at 85% 90%,
-      hsla(40, 45%, 82%, 0.4),
-      transparent 45%
+      hsla(210, 50%, 88%, 0.5),
+      transparent 40%
     ),
-    hsl(36 40% 98%);
+    radial-gradient(circle at 50% 50%, hsla(0, 0%, 98%, 0.3), transparent 60%),
+    hsl(200 45% 96%);
+  position: relative;
+}
+
+.invite-card::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, hsla(0, 0%, 100%, 0.9) 2px, transparent 2px),
+    radial-gradient(circle, hsla(0, 0%, 100%, 0.6) 1.5px, transparent 1.5px),
+    radial-gradient(circle, hsla(210, 30%, 90%, 0.7) 1px, transparent 1px);
+  background-size:
+    180px 180px,
+    120px 120px,
+    90px 90px;
+  background-position:
+    0 0,
+    60px 90px,
+    30px 45px;
+  z-index: 0;
+}
+
+.invite-card > * {
+  position: relative;
+  z-index: 1;
 }
