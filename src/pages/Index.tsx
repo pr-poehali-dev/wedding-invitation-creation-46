@@ -50,7 +50,7 @@ const Index = () => {
             Андрей
           </h1>
           <p className="font-body uppercase tracking-[0.4em] text-sm text-[hsl(var(--rose))] mt-6 animate-fade-up" style={{ animationDelay: '.7s', opacity: 0 }}>
-            12 · 09 · 2026
+            25 · 07 · 2026
           </p>
         </header>
 
@@ -121,7 +121,7 @@ const Index = () => {
           <p className="font-body text-sm leading-relaxed text-foreground/75">
             Дресс-код — пастельные тона и элегантность. Будем благодарны,
             если вместо цветов вы поддержите наше свадебное путешествие.
-            Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">1 сентября</span>.
+            Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">10 июля</span>.
           </p>
         </section>
 
