@@ -103,6 +103,36 @@ const Index = () => {
 
         <Divider />
 
+        {/* ФОТО */}
+        <section className="animate-fade-in">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="group relative overflow-hidden rounded-3xl aspect-[3/4] shadow-md hover:shadow-xl transition-shadow">
+              <img
+                src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/bucket/bd1f7dc2-fc7f-4d56-bf8c-aa5967c21226.jpeg"
+                alt=""
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <p className="absolute bottom-4 left-0 right-0 text-center font-hand text-white text-xl px-3 leading-snug drop-shadow">
+                там, где расцветает любовь
+              </p>
+            </div>
+            <div className="group relative overflow-hidden rounded-3xl aspect-[3/4] shadow-md hover:shadow-xl transition-shadow mt-8">
+              <img
+                src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/bucket/68068d68-80b7-4e5e-a9f2-704d6057d3ae.jpeg"
+                alt=""
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <p className="absolute bottom-4 left-0 right-0 text-center font-hand text-white text-xl px-3 leading-snug drop-shadow">
+                на вершине мира — вместе
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <Divider />
+
         {/* ОСНОВНАЯ ИНФОРМАЦИЯ */}
         <section className="text-center animate-fade-in">
           <p className="font-display text-2xl md:text-3xl font-light leading-relaxed text-foreground/80">
