@@ -229,13 +229,13 @@ const Index = () => {
         <section className="text-center animate-fade-in">
           <h2 className="font-display text-4xl mb-6">Контакты</h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <a href="tel:+70000000000" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
+            <a href="tel:+79186443306" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
               <Icon name="Phone" size={20} className="text-[hsl(var(--gold))]" />
-              <span className="font-display text-xl">Виола · +7 000 000 00 00</span>
+              <span className="font-display text-xl">Виола · +7 918 644 33 06</span>
             </a>
-            <a href="tel:+70000000001" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
+            <a href="tel:+79181368077" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
               <Icon name="Phone" size={20} className="text-[hsl(var(--gold))]" />
-              <span className="font-display text-xl">Андрей · +7 000 000 00 01</span>
+              <span className="font-display text-xl">Андрей · +7 918 136 80 77</span>
             </a>
           </div>
         </section>
