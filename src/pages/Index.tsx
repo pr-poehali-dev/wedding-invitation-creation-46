@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 
 const FLORAL = 'https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/10645cce-5a81-4e03-bac4-31169a1051b1.jpg';
-const WEDDING_DATE = new Date('2026-07-25T15:00:00');
+const WEDDING_DATE = new Date('2026-07-25T14:30:00');
 
 const useCountdown = () => {
   const calc = () => {
@@ -149,8 +149,8 @@ const Index = () => {
           <div className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow">
             <Icon name="CalendarHeart" size={32} className="mx-auto text-[hsl(var(--gold))]" />
             <h3 className="font-display text-3xl mt-3 mb-1">Дата и время</h3>
-            <p className="font-hand text-3xl text-[hsl(var(--rose))]">12 сентября</p>
-            <p className="font-body text-sm tracking-wider text-foreground/70 mt-1">суббота · 15:00</p>
+            <p className="font-hand text-3xl text-[hsl(var(--rose))]">25 июля</p>
+            <p className="font-body text-sm tracking-wider text-foreground/70 mt-1">суббота · 14:30</p>
           </div>
           <div className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow">
             <Icon name="MapPin" size={32} className="mx-auto text-[hsl(var(--gold))]" />
