@@ -4,8 +4,14 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 36 40% 97%;
+    --foreground: 350 15% 28%;
+
+    --blush: 350 55% 88%;
+    --rose: 348 38% 68%;
+    --champagne: 40 45% 82%;
+    --gold: 38 50% 58%;
+    --sage: 90 12% 70%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -97,5 +103,30 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Montserrat", sans-serif;
   }
+}
+
+.divider-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--gold)),
+    transparent
+  );
+}
+
+.invite-card {
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      hsla(350, 55%, 88%, 0.35),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 90%,
+      hsla(40, 45%, 82%, 0.4),
+      transparent 45%
+    ),
+    hsl(36 40% 98%);
 }

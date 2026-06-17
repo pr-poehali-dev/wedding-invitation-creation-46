@@ -1,15 +1,154 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Icon from '@/components/ui/icon';
+
+const FLORAL = 'https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/10645cce-5a81-4e03-bac4-31169a1051b1.jpg';
+
+const Divider = () => (
+  <div className="flex items-center justify-center gap-3 my-8 animate-fade-in">
+    <span className="h-px w-16 divider-line" />
+    <Icon name="Heart" size={16} className="text-[hsl(var(--rose))]" />
+    <span className="h-px w-16 divider-line" />
+  </div>
+);
+
+const timeline = [
+  { time: '15:00', title: 'Сбор гостей', icon: 'Users' },
+  { time: '16:00', title: 'Церемония', icon: 'Heart' },
+  { time: '17:00', title: 'Фуршет и фото', icon: 'Camera' },
+  { time: '18:30', title: 'Банкет', icon: 'Wine' },
+  { time: '22:00', title: 'Первый танец', icon: 'Music' },
+  { time: '23:30', title: 'Праздничный салют', icon: 'Sparkles' },
+];
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
+    <div className="min-h-screen invite-card text-foreground overflow-x-hidden">
+      <div className="max-w-2xl mx-auto px-6">
+
+        {/* HERO */}
+        <header className="relative pt-10 text-center">
+          <img
+            src={FLORAL}
+            alt=""
+            className="w-56 md:w-72 mx-auto mb-2 mix-blend-multiply animate-float opacity-90"
+          />
+          <p className="font-hand text-2xl text-[hsl(var(--rose))] animate-fade-up" style={{ animationDelay: '.1s', opacity: 0 }}>
+            Мы приглашаем вас на нашу свадьбу
+          </p>
+          <h1
+            className="font-display text-6xl md:text-8xl font-light tracking-wide mt-4 animate-fade-up"
+            style={{ animationDelay: '.3s', opacity: 0 }}
+          >
+            Анна
+          </h1>
+          <p className="font-hand text-4xl text-[hsl(var(--gold))] my-1 animate-fade-up" style={{ animationDelay: '.45s', opacity: 0 }}>
+            &amp;
+          </p>
+          <h1
+            className="font-display text-6xl md:text-8xl font-light tracking-wide animate-fade-up"
+            style={{ animationDelay: '.55s', opacity: 0 }}
+          >
+            Дмитрий
+          </h1>
+          <p className="font-body uppercase tracking-[0.4em] text-sm text-[hsl(var(--rose))] mt-6 animate-fade-up" style={{ animationDelay: '.7s', opacity: 0 }}>
+            12 · 09 · 2026
+          </p>
+        </header>
+
+        <Divider />
+
+        {/* ОСНОВНАЯ ИНФОРМАЦИЯ */}
+        <section className="text-center animate-fade-in">
+          <p className="font-display text-2xl md:text-3xl font-light leading-relaxed text-foreground/80">
+            Дорогие друзья и близкие! С трепетом и радостью в сердце мы хотим
+            разделить с вами один из самых важных дней нашей жизни.
+            Будем счастливы видеть вас в этот особенный день.
+          </p>
+        </section>
+
+        <Divider />
+
+        {/* ДАТА И ВРЕМЯ + МЕСТО */}
+        <section className="grid md:grid-cols-2 gap-6">
+          <div className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow">
+            <Icon name="CalendarHeart" size={32} className="mx-auto text-[hsl(var(--gold))]" />
+            <h3 className="font-display text-3xl mt-3 mb-1">Дата и время</h3>
+            <p className="font-hand text-3xl text-[hsl(var(--rose))]">12 сентября</p>
+            <p className="font-body text-sm tracking-wider text-foreground/70 mt-1">суббота · 15:00</p>
+          </div>
+          <div className="rounded-2xl border border-[hsl(var(--champagne))] bg-white/50 backdrop-blur-sm p-8 text-center hover:shadow-lg transition-shadow">
+            <Icon name="MapPin" size={32} className="mx-auto text-[hsl(var(--gold))]" />
+            <h3 className="font-display text-3xl mt-3 mb-1">Место</h3>
+            <p className="font-hand text-3xl text-[hsl(var(--rose))]">Усадьба «Сирень»</p>
+            <p className="font-body text-sm tracking-wider text-foreground/70 mt-1">г. Москва, ул. Цветочная, 7</p>
+          </div>
+        </section>
+
+        <Divider />
+
+        {/* ТАЙМИНГ */}
+        <section className="animate-fade-in">
+          <h2 className="font-display text-4xl text-center mb-2">План дня</h2>
+          <p className="text-center font-hand text-2xl text-[hsl(var(--rose))] mb-8">как пройдёт наш праздник</p>
+          <div className="relative">
+            <span className="absolute left-1/2 top-0 bottom-0 w-px bg-[hsl(var(--champagne))] -translate-x-1/2" />
+            <div className="space-y-6">
+              {timeline.map((t, i) => (
+                <div
+                  key={t.time}
+                  className={`relative flex items-center gap-4 ${i % 2 ? 'md:flex-row-reverse md:text-right' : ''}`}
+                >
+                  <div className="flex-1 md:px-8">
+                    <div className="inline-flex items-center gap-3 rounded-full bg-white/60 border border-[hsl(var(--champagne))] px-5 py-3">
+                      <Icon name={t.icon} size={20} className="text-[hsl(var(--gold))]" />
+                      <span className="font-body text-sm tracking-widest text-[hsl(var(--rose))]">{t.time}</span>
+                      <span className="font-display text-xl">{t.title}</span>
+                    </div>
+                  </div>
+                  <span className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[hsl(var(--gold))] ring-4 ring-[hsl(var(--background))]" />
+                  <div className="hidden md:block flex-1" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <Divider />
+
+        {/* ПРИМЕЧАНИЕ */}
+        <section className="rounded-2xl bg-[hsl(var(--blush))]/30 border border-[hsl(var(--blush))] p-8 text-center animate-fade-in">
+          <Icon name="Info" size={28} className="mx-auto text-[hsl(var(--gold))] mb-2" />
+          <h3 className="font-display text-3xl mb-3">Примечание</h3>
+          <p className="font-body text-sm leading-relaxed text-foreground/75">
+            Дресс-код — пастельные тона и элегантность. Будем благодарны,
+            если вместо цветов вы поддержите наше свадебное путешествие.
+            Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">1 сентября</span>.
+          </p>
+        </section>
+
+        <Divider />
+
+        {/* КОНТАКТЫ */}
+        <section className="text-center animate-fade-in">
+          <h2 className="font-display text-4xl mb-6">Контакты</h2>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <a href="tel:+70000000000" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
+              <Icon name="Phone" size={20} className="text-[hsl(var(--gold))]" />
+              <span className="font-display text-xl">Анна · +7 000 000 00 00</span>
+            </a>
+            <a href="tel:+70000000001" className="group flex items-center justify-center gap-3 rounded-full border border-[hsl(var(--champagne))] bg-white/50 px-6 py-4 hover:bg-white transition-colors">
+              <Icon name="Phone" size={20} className="text-[hsl(var(--gold))]" />
+              <span className="font-display text-xl">Дмитрий · +7 000 000 00 01</span>
+            </a>
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="text-center py-14">
+          <img src={FLORAL} alt="" className="w-40 mx-auto mb-3 mix-blend-multiply opacity-80 rotate-180" />
+          <p className="font-hand text-3xl text-[hsl(var(--rose))]">Ждём вас с любовью</p>
+        </footer>
+
       </div>
-      <span className="absolute bottom-8 left-1/2 -translate-x-1/2 inline-block bg-[#FF6637] text-white text-sm px-4 py-2 rounded-full whitespace-nowrap">
-        Подождите 5 минут, Юра создает первую версию проекта с нуля
-      </span>
     </div>
   );
 };
