@@ -105,8 +105,46 @@ const Index = () => {
           </p>
         </header>
 
+        {/* КАЛЕНДАРЬ */}
+        <section className="mt-12 animate-fade-in">
+          <div className="rounded-3xl bg-white/35 backdrop-blur-md border border-white/60 shadow-sm overflow-hidden max-w-xs mx-auto">
+            {/* Шапка месяца */}
+            <div className="bg-[hsl(var(--rose))] px-6 py-4 text-center">
+              <p className="font-body text-xs uppercase tracking-[0.3em] text-white/70 mb-1">2026</p>
+              <p className="font-display text-3xl font-light text-white tracking-wide">Июль</p>
+            </div>
+            {/* Дни недели */}
+            <div className="grid grid-cols-7 px-3 pt-3 pb-1">
+              {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => (
+                <div key={d} className="text-center font-body text-[9px] uppercase tracking-wider text-foreground/40 py-1">{d}</div>
+              ))}
+            </div>
+            {/* Дни */}
+            <div className="grid grid-cols-7 px-3 pb-4 gap-y-1">
+              {/* 1 июля 2026 — среда, отступ 2 ячейки */}
+              {[null, null, 1,2,3,4,5, 6,7,8,9,10,11,12, 13,14,15,16,17,18,19, 20,21,22,23,24,25,26, 27,28,29,30,31,null,null].map((day, i) => (
+                <div key={i} className="flex items-center justify-center">
+                  {day ? (
+                    <div className={`w-8 h-8 flex items-center justify-center rounded-full font-body text-sm transition-all
+                      ${day === 25
+                        ? 'bg-[hsl(var(--rose))] text-white font-medium shadow-md scale-110'
+                        : 'text-foreground/60 hover:bg-white/50'
+                      }`}>
+                      {day}
+                    </div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+            {/* Подпись */}
+            <div className="border-t border-white/40 px-6 py-3 text-center">
+              <p className="font-hand text-lg text-[hsl(var(--rose))]">наш день ♡</p>
+            </div>
+          </div>
+        </section>
+
         {/* COUNTDOWN */}
-        <section className="mt-12 text-center animate-fade-in">
+        <section className="mt-8 text-center animate-fade-in">
           <p className="font-hand text-xl text-[hsl(var(--rose))] mb-6 opacity-80">до нашей свадьбы осталось</p>
           <div className="flex justify-center items-start gap-3">
             <CountUnit value={countdown.days} label="дней" />
