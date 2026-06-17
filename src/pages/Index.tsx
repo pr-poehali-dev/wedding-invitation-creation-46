@@ -215,8 +215,10 @@ const Index = () => {
           <Icon name="Info" size={28} className="mx-auto text-[hsl(var(--gold))] mb-2" />
           <h3 className="font-display text-3xl mb-3">Примечание</h3>
           <p className="font-body text-sm leading-relaxed text-foreground/75">
-            Дресс-код — пастельные тона и элегантность. Будем благодарны,
-            если вместо цветов вы поддержите наше свадебное путешествие.
+            Наша свадьба состоится на открытом воздухе. Пожалуйста, захватите
+            что-то тёплое, чтобы не замёрзнуть. Мы подготовим пледы на случай,
+            если вам станет холодно.
+            <br /><br />
             Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">10 июля</span>.
           </p>
         </section>
