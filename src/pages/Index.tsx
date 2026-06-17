@@ -4,14 +4,11 @@ import Icon from '@/components/ui/icon';
 const WEDDING_DATE = new Date('2026-07-25T14:30:00');
 
 const Rings = () => (
-  <svg viewBox="0 0 200 120" className="w-44 md:w-56 mx-auto mb-6 animate-float" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="72" cy="60" r="44" stroke="hsla(200,40%,72%,0.85)" strokeWidth="6" fill="none"/>
-    <circle cx="72" cy="60" r="44" stroke="hsla(0,0%,100%,0.5)" strokeWidth="1.5" fill="none" strokeDasharray="3 7"/>
-    <circle cx="128" cy="60" r="44" stroke="hsla(38,45%,70%,0.85)" strokeWidth="6" fill="none"/>
-    <circle cx="128" cy="60" r="44" stroke="hsla(0,0%,100%,0.5)" strokeWidth="1.5" fill="none" strokeDasharray="3 7"/>
-    <circle cx="80" cy="34" r="3.5" fill="hsla(0,0%,100%,0.9)"/>
-    <circle cx="122" cy="88" r="2.5" fill="hsla(0,0%,100%,0.75)"/>
-  </svg>
+  <img
+    src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/afc3cc77-c7da-470e-8ffa-c7d184c5471b.jpg"
+    alt="обручальные кольца"
+    className="w-44 md:w-56 mx-auto mb-6 animate-float rounded-3xl mix-blend-multiply"
+  />
 );
 
 const useCountdown = () => {
