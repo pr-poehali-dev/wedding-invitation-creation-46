@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 
-const FLORAL = 'https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/10645cce-5a81-4e03-bac4-31169a1051b1.jpg';
+const Rings = () => (
+  <svg viewBox="0 0 200 120" className="w-48 md:w-64 mx-auto mb-4 animate-float" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="72" cy="60" r="44" stroke="hsla(200,40%,72%,0.9)" strokeWidth="7" fill="none"/>
+    <circle cx="72" cy="60" r="44" stroke="hsla(0,0%,100%,0.4)" strokeWidth="2" fill="none" strokeDasharray="4 8"/>
+    <circle cx="128" cy="60" r="44" stroke="hsla(38,45%,70%,0.9)" strokeWidth="7" fill="none"/>
+    <circle cx="128" cy="60" r="44" stroke="hsla(0,0%,100%,0.4)" strokeWidth="2" fill="none" strokeDasharray="4 8"/>
+    <circle cx="80" cy="34" r="4" fill="hsla(0,0%,100%,0.85)"/>
+    <circle cx="122" cy="88" r="3" fill="hsla(0,0%,100%,0.7)"/>
+  </svg>
+);
 const WEDDING_DATE = new Date('2026-07-25T14:30:00');
 
 const useCountdown = () => {
@@ -58,11 +67,7 @@ const Index = () => {
 
         {/* HERO */}
         <header className="relative pt-10 text-center">
-          <img
-            src={FLORAL}
-            alt=""
-            className="w-56 md:w-72 mx-auto mb-2 mix-blend-multiply animate-float opacity-90"
-          />
+          <Rings />
           <p className="font-hand text-2xl text-[hsl(var(--rose))] animate-fade-up" style={{ animationDelay: '.1s', opacity: 0 }}>
             Мы приглашаем вас на нашу свадьбу
           </p>
@@ -242,7 +247,7 @@ const Index = () => {
 
         {/* FOOTER */}
         <footer className="text-center py-14">
-          <img src={FLORAL} alt="" className="w-40 mx-auto mb-3 mix-blend-multiply opacity-80 rotate-180" />
+          <Rings />
           <p className="font-hand text-3xl text-[hsl(var(--rose))]">Ждём вас с любовью</p>
         </footer>
 
