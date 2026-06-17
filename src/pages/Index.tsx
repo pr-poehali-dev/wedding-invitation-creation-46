@@ -1,6 +1,38 @@
+import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 
 const FLORAL = 'https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/10645cce-5a81-4e03-bac4-31169a1051b1.jpg';
+const WEDDING_DATE = new Date('2026-07-25T15:00:00');
+
+const useCountdown = () => {
+  const calc = () => {
+    const diff = WEDDING_DATE.getTime() - Date.now();
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    return {
+      days: Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      minutes: Math.floor((diff % 3600000) / 60000),
+      seconds: Math.floor((diff % 60000) / 1000),
+    };
+  };
+  const [time, setTime] = useState(calc);
+  useEffect(() => {
+    const t = setInterval(() => setTime(calc()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  return time;
+};
+
+const CountUnit = ({ value, label }: { value: number; label: string }) => (
+  <div className="flex flex-col items-center">
+    <div className="relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl bg-white/60 border border-[hsl(var(--champagne))] shadow-sm">
+      <span className="font-display text-3xl md:text-4xl font-light text-foreground">
+        {String(value).padStart(2, '0')}
+      </span>
+    </div>
+    <span className="font-body text-[10px] uppercase tracking-widest text-[hsl(var(--rose))] mt-2">{label}</span>
+  </div>
+);
 
 const Divider = () => (
   <div className="flex items-center justify-center gap-3 my-8 animate-fade-in">
@@ -20,6 +52,7 @@ const timeline = [
 ];
 
 const Index = () => {
+  const countdown = useCountdown();
   return (
     <div className="min-h-screen invite-card text-foreground overflow-x-hidden">
       <div className="max-w-2xl mx-auto px-6">
@@ -53,6 +86,20 @@ const Index = () => {
             25 · 07 · 2026
           </p>
         </header>
+
+        {/* ОБРАТНЫЙ ОТСЧЁТ */}
+        <section className="text-center mt-10 animate-fade-in">
+          <p className="font-hand text-2xl text-[hsl(var(--rose))] mb-5">до нашей свадьбы осталось</p>
+          <div className="flex justify-center gap-4">
+            <CountUnit value={countdown.days} label="дней" />
+            <div className="font-display text-3xl text-[hsl(var(--gold))] self-start pt-3">:</div>
+            <CountUnit value={countdown.hours} label="часов" />
+            <div className="font-display text-3xl text-[hsl(var(--gold))] self-start pt-3">:</div>
+            <CountUnit value={countdown.minutes} label="минут" />
+            <div className="font-display text-3xl text-[hsl(var(--gold))] self-start pt-3">:</div>
+            <CountUnit value={countdown.seconds} label="секунд" />
+          </div>
+        </section>
 
         <Divider />
 
