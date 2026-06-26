@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 
+const RSVP_URL = 'https://functions.poehali.dev/d260baa8-ab68-4cd3-b4d1-bb2853db083b';
+
 const WEDDING_DATE = new Date('2026-07-25T14:30:00');
 
 const Rings = () => (
@@ -62,6 +64,119 @@ const timeline = [
   { time: '17:00', title: 'Семейный ужин', icon: 'Wine' },
   { time: '23:00', title: 'Завершение вечера', icon: 'Moon' },
 ];
+
+const RsvpForm = () => {
+  const [name, setName] = useState('');
+  const [attending, setAttending] = useState<boolean | null>(null);
+  const [guests, setGuests] = useState(1);
+  const [comment, setComment] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const submit = async () => {
+    if (!name.trim() || attending === null) return;
+    setStatus('loading');
+    try {
+      const res = await fetch(RSVP_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.trim(), attending, guests_count: guests, comment }),
+      });
+      if (res.ok) setStatus('success');
+      else setStatus('error');
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  if (status === 'success') {
+    return (
+      <Card className="p-8 text-center">
+        <div className="w-14 h-14 rounded-full bg-[hsl(var(--rose))/15] flex items-center justify-center mx-auto mb-4">
+          <Icon name="Heart" size={28} className="text-[hsl(var(--rose))]" />
+        </div>
+        <p className="font-display text-2xl font-light mb-2">Спасибо!</p>
+        <p className="font-body text-sm text-foreground/60">
+          {attending ? 'Мы с нетерпением ждём вас на нашем празднике!' : 'Жаль, что не сможете прийти. Будем думать о вас!'}
+        </p>
+      </Card>
+    );
+  }
+
+  const inputCls = 'w-full rounded-2xl bg-white/50 border border-white/70 px-4 py-3 font-body text-sm text-foreground placeholder:text-foreground/40 outline-none focus:border-[hsl(var(--gold))] transition-colors';
+
+  return (
+    <Card className="p-6 flex flex-col gap-4">
+      <div>
+        <label className="font-body text-xs uppercase tracking-[0.2em] text-foreground/50 mb-2 block">Ваше имя</label>
+        <input
+          className={inputCls}
+          placeholder="Имя и фамилия"
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className="font-body text-xs uppercase tracking-[0.2em] text-foreground/50 mb-2 block">Вы придёте?</label>
+        <div className="grid grid-cols-2 gap-3">
+          {[{ val: true, label: 'Да, приду!', icon: 'Heart' }, { val: false, label: 'Не смогу', icon: 'X' }].map(({ val, label, icon }) => (
+            <button
+              key={String(val)}
+              onClick={() => setAttending(val)}
+              className={`rounded-2xl border py-3 px-4 flex items-center justify-center gap-2 font-body text-sm transition-all duration-200 ${
+                attending === val
+                  ? 'bg-[hsl(var(--rose))/15] border-[hsl(var(--rose))/50] text-foreground'
+                  : 'bg-white/30 border-white/60 text-foreground/60 hover:bg-white/50'
+              }`}
+            >
+              <Icon name={icon as 'Heart' | 'X'} size={14} className={attending === val ? 'text-[hsl(var(--rose))]' : ''} />
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {attending === true && (
+        <div>
+          <label className="font-body text-xs uppercase tracking-[0.2em] text-foreground/50 mb-2 block">Количество гостей</label>
+          <div className="flex items-center gap-3">
+            <button onClick={() => setGuests(g => Math.max(1, g - 1))} className="w-10 h-10 rounded-xl bg-white/50 border border-white/70 flex items-center justify-center text-foreground/70 hover:bg-white/70 transition-colors">
+              <Icon name="Minus" size={14} />
+            </button>
+            <span className="font-display text-2xl font-light w-8 text-center">{guests}</span>
+            <button onClick={() => setGuests(g => Math.min(10, g + 1))} className="w-10 h-10 rounded-xl bg-white/50 border border-white/70 flex items-center justify-center text-foreground/70 hover:bg-white/70 transition-colors">
+              <Icon name="Plus" size={14} />
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div>
+        <label className="font-body text-xs uppercase tracking-[0.2em] text-foreground/50 mb-2 block">Пожелания (необязательно)</label>
+        <textarea
+          className={`${inputCls} resize-none`}
+          rows={3}
+          placeholder="Аллергии, пожелания к меню..."
+          value={comment}
+          onChange={e => setComment(e.target.value)}
+        />
+      </div>
+
+      {status === 'error' && (
+        <p className="font-body text-xs text-red-400 text-center">Что-то пошло не так, попробуйте ещё раз</p>
+      )}
+
+      <button
+        onClick={submit}
+        disabled={!name.trim() || attending === null || status === 'loading'}
+        className="w-full rounded-2xl py-4 font-body text-sm font-medium tracking-wide transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+        style={{ background: 'linear-gradient(135deg, hsl(var(--rose)), hsl(var(--gold)))', color: 'white' }}
+      >
+        {status === 'loading' ? 'Отправляем...' : 'Подтвердить'}
+      </button>
+    </Card>
+  );
+};
 
 const Index = () => {
   const countdown = useCountdown();
@@ -276,6 +391,15 @@ const Index = () => {
               Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">10 июля</span>
             </p>
           </Card>
+        </section>
+
+        <Divider />
+
+        {/* RSVP */}
+        <section>
+          <p className="font-body text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2 text-center">подтверждение</p>
+          <h2 className="font-display text-4xl font-light mb-7 text-center">Вы придёте?</h2>
+          <RsvpForm />
         </section>
 
         <Divider />
