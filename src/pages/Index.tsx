@@ -270,7 +270,7 @@ const Index = () => {
             <Icon name="Wind" size={26} className="mx-auto text-[hsl(var(--gold))] mb-3" />
             <p className="font-body text-xs uppercase tracking-[0.25em] text-foreground/50 mb-3">примечание</p>
             <p className="font-display text-lg font-light leading-relaxed text-foreground/75">
-              Наша свадьба состоится на открытом воздухе. Пожалуйста, захватите что-то тёплое, чтобы не замёрзнуть. Мы подготовим пледы на случай, если вам станет холодно.
+              Наша свадьба состоится на открытом воздухе. Пожалуйста, захватите что-то тёплое, чтобы не замёрзнуть.
             </p>
             <p className="font-body text-xs text-foreground/50 mt-4">
               Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">10 июля</span>
