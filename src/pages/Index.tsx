@@ -5,9 +5,9 @@ const WEDDING_DATE = new Date('2026-07-25T14:30:00');
 
 const Rings = () => (
   <img
-    src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/afc3cc77-c7da-470e-8ffa-c7d184c5471b.jpg"
+    src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/a8071528-893e-4270-8afd-4f693dae395d.jpg"
     alt="обручальные кольца"
-    className="w-44 md:w-56 mx-auto mb-6 animate-float rounded-3xl mix-blend-multiply"
+    className="w-44 md:w-56 mx-auto mb-6 animate-float mix-blend-multiply opacity-90"
   />
 );
 
@@ -107,29 +107,33 @@ const Index = () => {
 
         {/* КАЛЕНДАРЬ */}
         <section className="mt-12 animate-fade-in">
-          <div className="rounded-3xl bg-white/35 backdrop-blur-md border border-white/60 shadow-sm overflow-hidden max-w-xs mx-auto">
+          <div className="rounded-3xl overflow-hidden max-w-xs mx-auto shadow-sm" style={{ background: 'hsla(38,35%,92%,0.7)', backdropFilter: 'blur(12px)', border: '1px solid hsla(38,40%,85%,0.6)' }}>
             {/* Шапка месяца */}
-            <div className="bg-[hsl(var(--rose))] px-6 py-4 text-center">
-              <p className="font-body text-xs uppercase tracking-[0.3em] text-white/70 mb-1">2026</p>
-              <p className="font-display text-3xl font-light text-white tracking-wide">Июль</p>
+            <div className="px-6 py-5 text-center" style={{ background: 'linear-gradient(135deg, hsla(38,45%,85%,0.9), hsla(30,40%,88%,0.9))' }}>
+              <p className="font-body text-[10px] uppercase tracking-[0.35em] text-[hsl(var(--gold))] mb-1">2026</p>
+              <p className="font-display text-3xl font-light tracking-wide" style={{ color: 'hsl(30,20%,32%)' }}>Июль</p>
             </div>
             {/* Дни недели */}
             <div className="grid grid-cols-7 px-3 pt-3 pb-1">
               {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(d => (
-                <div key={d} className="text-center font-body text-[9px] uppercase tracking-wider text-foreground/40 py-1">{d}</div>
+                <div key={d} className="text-center font-body text-[9px] uppercase tracking-wider py-1" style={{ color: 'hsla(30,15%,45%,0.6)' }}>{d}</div>
               ))}
             </div>
             {/* Дни */}
             <div className="grid grid-cols-7 px-3 pb-4 gap-y-1">
-              {/* 1 июля 2026 — среда, отступ 2 ячейки */}
               {[null, null, 1,2,3,4,5, 6,7,8,9,10,11,12, 13,14,15,16,17,18,19, 20,21,22,23,24,25,26, 27,28,29,30,31,null,null].map((day, i) => (
                 <div key={i} className="flex items-center justify-center">
                   {day ? (
                     <div className={`w-8 h-8 flex items-center justify-center rounded-full font-body text-sm transition-all
                       ${day === 25
-                        ? 'bg-[hsl(var(--rose))] text-white font-medium shadow-md scale-110'
-                        : 'text-foreground/60 hover:bg-white/50'
-                      }`}>
+                        ? 'shadow-md scale-110 text-white font-medium'
+                        : ''
+                      }`}
+                      style={day === 25
+                        ? { background: 'linear-gradient(135deg, hsl(var(--rose)), hsl(var(--gold)))' }
+                        : { color: 'hsla(30,18%,35%,0.7)' }
+                      }
+                    >
                       {day}
                     </div>
                   ) : null}
@@ -137,7 +141,7 @@ const Index = () => {
               ))}
             </div>
             {/* Подпись */}
-            <div className="border-t border-white/40 px-6 py-3 text-center">
+            <div className="px-6 py-3 text-center" style={{ borderTop: '1px solid hsla(38,35%,78%,0.5)' }}>
               <p className="font-hand text-lg text-[hsl(var(--rose))]">наш день ♡</p>
             </div>
           </div>
