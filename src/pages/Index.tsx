@@ -83,7 +83,7 @@ const Index = () => {
             className="font-display font-light animate-fade-up"
             style={{ fontSize: 'clamp(3.5rem, 14vw, 6rem)', lineHeight: 1.05, letterSpacing: '-0.01em', animationDelay: '.25s', opacity: 0 }}
           >
-            Виола
+            Андрей
           </h1>
           <p
             className="font-hand text-3xl text-[hsl(var(--gold))] my-2 animate-fade-up"
@@ -95,7 +95,7 @@ const Index = () => {
             className="font-display font-light animate-fade-up"
             style={{ fontSize: 'clamp(3.5rem, 14vw, 6rem)', lineHeight: 1.05, letterSpacing: '-0.01em', animationDelay: '.5s', opacity: 0 }}
           >
-            Андрей
+            Виола
           </h1>
           <p
             className="font-body text-xs uppercase tracking-[0.3em] text-[hsl(var(--rose))/60] mt-8 animate-fade-up"
@@ -270,7 +270,7 @@ const Index = () => {
             <Icon name="Wind" size={26} className="mx-auto text-[hsl(var(--gold))] mb-3" />
             <p className="font-body text-xs uppercase tracking-[0.25em] text-foreground/50 mb-3">примечание</p>
             <p className="font-display text-lg font-light leading-relaxed text-foreground/75">
-              Наша свадьба состоится на открытом воздухе. Пожалуйста, захватите что-то тёплое, чтобы не замёрзнуть.
+              Наша свадьба состоится на открытом воздухе.
             </p>
             <p className="font-body text-xs text-foreground/50 mt-4">
               Просим подтвердить присутствие до <span className="text-[hsl(var(--rose))]">10 июля</span>
