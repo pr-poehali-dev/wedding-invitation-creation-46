@@ -168,7 +168,7 @@ const Index = () => {
           <div className="grid grid-cols-2 gap-3">
             <div className="group relative overflow-hidden rounded-3xl aspect-[3/4] shadow-sm">
               <img
-                src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/bucket/636e90fc-6e38-4883-ac4c-f9ae47b71fa9.png"
+                src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/bucket/b959cdf1-fd80-42e5-becf-f296b9810553.png"
                 alt=""
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
