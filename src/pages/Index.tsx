@@ -5,8 +5,8 @@ const WEDDING_DATE = new Date('2026-07-25T14:30:00');
 
 const Rings = () => (
   <img
-    src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/a8071528-893e-4270-8afd-4f693dae395d.jpg"
-    alt="обручальные кольца"
+    src="https://cdn.poehali.dev/projects/e7528ddf-4cfe-43fc-a9d5-7347760773b7/files/3394ef26-8300-4835-a6eb-d73a0341d5c9.jpg"
+    alt="сердце"
     className="w-44 md:w-56 mx-auto mb-6 animate-float mix-blend-multiply opacity-90"
   />
 );
