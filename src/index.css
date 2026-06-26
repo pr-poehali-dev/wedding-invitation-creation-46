@@ -104,6 +104,13 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
   }
 }
 
